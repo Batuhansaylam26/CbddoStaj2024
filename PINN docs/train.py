@@ -13,17 +13,15 @@ losses = []
 losses_physic = []
 losses_ic = []
 results = []
-
+loss=LossFunction()
 # Training loop
 for epoch in range(epochs):
     optimizer.zero_grad()
-    x_pred, loss, loss_physic, loss_ic = LossFunction(t_train, t_boundary, model)
+    loss = loss(t_train, t_boundary, model)
     loss.backward()
     optimizer.step()
 
-    losses.append(loss.item()), losses_physic.append(
-        loss_physic.item()
-    ), losses_ic.append(loss_ic.item())
+    losses.append(loss.item())
     results.append(model(t_train).detach().numpy())
 
     if epoch % 500 == 0:
