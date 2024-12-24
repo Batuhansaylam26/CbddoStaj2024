@@ -13,11 +13,10 @@ losses = []
 losses_physic = []
 losses_ic = []
 results = []
-loss=LossFunction()
 # Training loop
 for epoch in range(epochs):
     optimizer.zero_grad()
-    loss = loss(t_train, t_boundary, model)
+    loss = LossFunction(t_train, t_boundary, model)
     loss.backward()
     optimizer.step()
 
