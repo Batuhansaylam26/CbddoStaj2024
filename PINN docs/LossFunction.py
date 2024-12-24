@@ -40,7 +40,7 @@ class LossFunction(nn.Module):
         )
         return residual
 
-    def MSELoss(self, c_R: float, k1: torch.tensor, k2: torch.tensor, mu: float):
+    def forward(self, c_R: float, k1: torch.tensor, k2: torch.tensor, mu: float):
         loss = nn.MSELoss()
         res = self.resiudal(c_R, k1, k2, mu)
         return loss(res, torch.zeros_like(res))
