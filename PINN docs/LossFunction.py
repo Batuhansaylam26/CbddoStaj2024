@@ -3,7 +3,7 @@ import numpy as np
 import torch.nn as nn
 
 
-class LossFunction:
+class LossFunction(nn.Module):
     def __init__(
         self,
         omegas: torch.tensor,
